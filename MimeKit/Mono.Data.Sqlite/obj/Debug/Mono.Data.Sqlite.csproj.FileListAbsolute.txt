@@ -1,0 +1,5 @@
+D:\Investment\Project\MailKit-master\MimeKit\Mono.Data.Sqlite\bin\Debug\Mono.Data.Sqlite.dll
+D:\Investment\Project\MailKit-master\MimeKit\Mono.Data.Sqlite\bin\Debug\Mono.Data.Sqlite.pdb
+D:\Investment\Project\MailKit-master\MimeKit\Mono.Data.Sqlite\obj\Debug\ResolveAssemblyReference.cache
+D:\Investment\Project\MailKit-master\MimeKit\Mono.Data.Sqlite\obj\Debug\Mono.Data.Sqlite.dll
+D:\Investment\Project\MailKit-master\MimeKit\Mono.Data.Sqlite\obj\Debug\Mono.Data.Sqlite.pdb

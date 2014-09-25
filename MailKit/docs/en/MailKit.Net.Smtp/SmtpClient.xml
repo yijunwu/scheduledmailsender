@@ -1,0 +1,578 @@
+<Type Name="SmtpClient" FullName="MailKit.Net.Smtp.SmtpClient">
+  <TypeSignature Language="C#" Value="public class SmtpClient : IDisposable, MailKit.IMessageTransport" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SmtpClient extends System.Object implements class MailKit.IMessageService, class MailKit.IMessageTransport, class System.IDisposable" />
+  <AssemblyInfo>
+    <AssemblyName>MailKit</AssemblyName>
+    <AssemblyVersion>0.14.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>MailKit.IMessageTransport</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            An SMTP client that can be used to send email messages.
+            </summary>
+    <remarks>
+            The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> class supports both the "smtp" and "smtps"
+            protocols. The "smtp" protocol makes a clear-text connection to the SMTP
+            server and does not use SSL or TLS unless the SMTP server supports the
+            STARTTLS extension (as defined by rfc3207). The "smtps" protocol,
+            however, connects to the SMTP server using an SSL-wrapped connection.
+            </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public SmtpClient ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>
+            Initializes a new instance of the <see cref="T:MailKit.Net.Smtp.SmtpClient" /> class.
+            </summary>
+        <remarks>
+            Before you can send messages with the <see cref="T:MailKit.Net.Smtp.SmtpClient" />, you must first call
+            the <see cref="M:MailKit.Net.Smtp.SmtpClient.Connect(System.Uri,System.Threading.CancellationToken)" /> method. Depending on the server,
+            you may also need to authenticate using the
+            <see cref="M:MailKit.Net.Smtp.SmtpClient.Authenticate(System.Net.ICredentials,System.Threading.CancellationToken)" /> method.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public SmtpClient (MailKit.IProtocolLogger protocolLogger);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MailKit.IProtocolLogger protocolLogger) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="protocolLogger" Type="MailKit.IProtocolLogger" />
+      </Parameters>
+      <Docs>
+        <param name="protocolLogger">The protocol logger.</param>
+        <summary>
+            Initializes a new instance of the <see cref="T:MailKit.Net.Smtp.SmtpClient" /> class.
+            </summary>
+        <remarks>
+            Before you can send messages with the <see cref="T:MailKit.Net.Smtp.SmtpClient" />, you must first call
+            the <see cref="M:MailKit.Net.Smtp.SmtpClient.Connect(System.Uri,System.Threading.CancellationToken)" /> method. Depending on the server,
+            you may also need to authenticate using the
+            <see cref="M:MailKit.Net.Smtp.SmtpClient.Authenticate(System.Net.ICredentials,System.Threading.CancellationToken)" /> method.
+            </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="protocolLogger" /> is <c>null</c>.
+            </exception>
+      </Docs>
+    </Member>
+    <Member MemberName="Authenticate">
+      <MemberSignature Language="C#" Value="public void Authenticate (System.Net.ICredentials credentials, System.Threading.CancellationToken cancellationToken = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Authenticate(class System.Net.ICredentials credentials, valuetype System.Threading.CancellationToken cancellationToken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="credentials" Type="System.Net.ICredentials" />
+        <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="credentials">The user's credentials.</param>
+        <param name="cancellationToken">A cancellation token.</param>
+        <summary>
+            Authenticates using the supplied credentials.
+            </summary>
+        <remarks>
+          <para>If the SMTP server supports authentication, then the SASL mechanisms
+            that both the client and server support are tried in order of greatest
+            security to weakest security. Once a SASL authentication mechanism is
+            found that both client and server support, the credentials are used to
+            authenticate.</para>
+          <para>If, on the other hand, authentication is not supported, then
+            this method simply returns without attempting to authenticate.</para>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="credentials" /> is <c>null</c>.
+            </exception>
+        <exception cref="T:System.InvalidOperationException">
+            The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> is not connected or is already authenticated.
+            </exception>
+        <exception cref="T:System.NotSupportedException">
+            The SMTP server does not support authentication.
+            </exception>
+        <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+        <exception cref="T:System.Security.Authentication.AuthenticationException">
+            Authentication using the supplied credentials has failed.
+            </exception>
+        <exception cref="T:MailKit.Security.SaslException">
+            A SASL authentication error occurred.
+            </exception>
+        <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpException">
+            An SMTP protocol error occurred.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpCommandException">
+            The SMTP command failed.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpProtocolException">
+            An SMTP protocol error occurred.
+            </exception>
+        <exception cref="T:MailKit.Security.AuthenticationException">
+            Authentication using the supplied credentials has failed.
+            </exception>
+      </Docs>
+    </Member>
+    <Member MemberName="AuthenticationMechanisms">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.HashSet&lt;string&gt; AuthenticationMechanisms { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.HashSet`1&lt;string&gt; AuthenticationMechanisms" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.HashSet&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets the authentication mechanisms supported by the SMTP server.
+            </summary>
+        <value>The authentication mechanisms.</value>
+        <remarks>
+            The authentication mechanisms are queried durring the <see cref="M:MailKit.Net.Smtp.SmtpClient.Connect(System.Uri,System.Threading.CancellationToken)" /> method.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Capabilities">
+      <MemberSignature Language="C#" Value="public MailKit.Net.Smtp.SmtpCapabilities Capabilities { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MailKit.Net.Smtp.SmtpCapabilities Capabilities" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MailKit.Net.Smtp.SmtpCapabilities</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets the capabilities supported by the SMTP server.
+            </summary>
+        <value>The capabilities.</value>
+        <remarks>
+            The capabilities will not be known until a successful connection has been made via
+            the <see cref="M:MailKit.Net.Smtp.SmtpClient.Connect(System.Uri,System.Threading.CancellationToken)" /> method and may change as a side-effect
+            of the <see cref="M:MailKit.Net.Smtp.SmtpClient.Authenticate(System.Net.ICredentials,System.Threading.CancellationToken)" /> method.
+            </remarks>
+        <exception cref="T:System.ArgumentException">
+            Capabilities cannot be enabled, they may only be disabled.
+            </exception>
+      </Docs>
+    </Member>
+    <Member MemberName="ClientCertificates">
+      <MemberSignature Language="C#" Value="public System.Security.Cryptography.X509Certificates.X509CertificateCollection ClientCertificates { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Security.Cryptography.X509Certificates.X509CertificateCollection ClientCertificates" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Security.Cryptography.X509Certificates.X509CertificateCollection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets or sets the client SSL certificates.
+            </summary>
+        <value>The client SSL certificates.</value>
+        <remarks>
+          <para>Some servers may require the client SSL certificates in order
+            to allow the user to connect.</para>
+          <para>This property should be set before calling <see cref="M:MailKit.Net.Smtp.SmtpClient.Connect(System.Uri,System.Threading.CancellationToken)" />.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Connect">
+      <MemberSignature Language="C#" Value="public void Connect (Uri uri, System.Threading.CancellationToken cancellationToken = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Connect(class System.Uri uri, valuetype System.Threading.CancellationToken cancellationToken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.Uri" />
+        <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="uri">The server URI. The <see cref="P:System.Uri.Scheme" /> should either
+            be "smtp" to make a clear-text connection or "smtps" to make an SSL connection.</param>
+        <param name="cancellationToken">A cancellation token.</param>
+        <summary>
+            Establishes a connection to the specified SMTP server.
+            </summary>
+        <remarks>
+          <para>Establishes a connection to an SMTP or SMTP/S server. If the schema
+            in the uri is "smtp", a clear-text connection is made and defaults to using
+            port 25 if no port is specified in the URI. However, if the schema in the
+            uri is "smtps", an SSL connection is made using the
+            <see cref="P:MailKit.Net.Smtp.SmtpClient.ClientCertificates" /> and defaults to port 465 unless a port
+            is specified in the URI.</para>
+          <para>It should be noted that when using a clear-text SMTP connection,
+            if the server advertizes support for the STARTTLS extension, the client
+            will automatically switch into TLS mode before authenticating unless the
+            <paramref name="uri" /> contains a query string to disable it.</para>
+            If a successful connection is made, the <see cref="P:MailKit.Net.Smtp.SmtpClient.AuthenticationMechanisms" />
+            and <see cref="P:MailKit.Net.Smtp.SmtpClient.Capabilities" /> properties will be populated.
+            </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <para>The <paramref name="uri" /> is <c>null</c>.</para>
+        </exception>
+        <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> has been disposed.
+            </exception>
+        <exception cref="T:System.OperationCanceledException">
+            The operation was canceled.
+            </exception>
+        <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpException">
+            An SMTP protocol error occurred.
+            </exception>
+        <exception cref="T:System.InvalidOperationException">
+            The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> is already connected.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpCommandException">
+            An SMTP command failed.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpProtocolException">
+            An SMTP protocol error occurred.
+            </exception>
+        <exception cref="T:System.ArgumentException">
+            The <paramref name="uri" /> is not an absolute URI.
+            </exception>
+      </Docs>
+    </Member>
+    <Member MemberName="Disconnect">
+      <MemberSignature Language="C#" Value="public void Disconnect (bool quit, System.Threading.CancellationToken cancellationToken = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Disconnect(bool quit, valuetype System.Threading.CancellationToken cancellationToken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="quit" Type="System.Boolean" />
+        <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="quit">If set to <c>true</c>, a "QUIT" command will be issued in order to disconnect cleanly.</param>
+        <param name="cancellationToken">A cancellation token.</param>
+        <summary>
+            Disconnect the service.
+            </summary>
+        <remarks>
+            If <paramref name="quit" /> is <c>true</c>, a "QUIT" command will be issued in order to disconnect cleanly.
+            </remarks>
+        <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> has been disposed.
+            </exception>
+        <exception cref="T:System.OperationCanceledException">
+            The operation was canceled.
+            </exception>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Releases all resource used by the <see cref="T:MailKit.Net.Smtp.SmtpClient" /> object.
+            </summary>
+        <remarks>Call <see cref="M:MailKit.Net.Smtp.SmtpClient.Dispose" /> when you are finished using the <see cref="T:MailKit.Net.Smtp.SmtpClient" />. The
+            <see cref="M:MailKit.Net.Smtp.SmtpClient.Dispose" /> method leaves the <see cref="T:MailKit.Net.Smtp.SmtpClient" /> in an unusable state. After
+            calling <see cref="M:MailKit.Net.Smtp.SmtpClient.Dispose" />, you must release all references to the <see cref="T:MailKit.Net.Smtp.SmtpClient" /> so
+            the garbage collector can reclaim the memory that the <see cref="T:MailKit.Net.Smtp.SmtpClient" /> was occupying.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="protected virtual void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">
+          <c>true</c> to release both managed and unmanaged resources;
+            <c>false</c> to release only the unmanaged resources.</param>
+        <summary>
+            Releases the unmanaged resources used by the <see cref="T:MailKit.Net.Smtp.SmtpClient" /> and
+            optionally releases the managed resources.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Finalize">
+      <MemberSignature Language="C#" Value="~SmtpClient ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Releases unmanaged resources and performs other cleanup operations before the
+            <see cref="T:MailKit.Net.Smtp.SmtpClient" /> is reclaimed by garbage collection.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsConnected">
+      <MemberSignature Language="C#" Value="public bool IsConnected { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsConnected" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets whether or not the client is currently connected to an SMTP server.
+            </summary>
+        <value>
+          <c>true</c> if the client is connected; otherwise, <c>false</c>.</value>
+        <remarks>
+            When a <see cref="T:MailKit.Net.Smtp.SmtpProtocolException" /> is caught, the connection state of the
+            <see cref="T:MailKit.Net.Smtp.SmtpClient" /> should be checked before continuing.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxSize">
+      <MemberSignature Language="C#" Value="public uint MaxSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets the maximum message size supported by the server.
+            </summary>
+        <value>The maximum message size supported by the server.</value>
+        <remarks>
+          <para>The maximum message size will not be known until a successful
+            connection has been made via the <see cref="M:MailKit.Net.Smtp.SmtpClient.Connect(System.Uri,System.Threading.CancellationToken)" /> method
+            and may change as a side-effect of the <see cref="M:MailKit.Net.Smtp.SmtpClient.Authenticate(System.Net.ICredentials,System.Threading.CancellationToken)" />
+            method.</para>
+          <para>Note: This value is only relevant if the <see cref="P:MailKit.Net.Smtp.SmtpClient.Capabilities" />
+            includes the <see cref="F:MailKit.Net.Smtp.SmtpCapabilities.Size" /> flag.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NoOp">
+      <MemberSignature Language="C#" Value="public void NoOp (System.Threading.CancellationToken cancellationToken = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void NoOp(valuetype System.Threading.CancellationToken cancellationToken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="cancellationToken">A cancellation token.</param>
+        <summary>
+            Pings the SMTP server to keep the connection alive.
+            </summary>
+        <remarks>Mail servers, if left idle for too long, will automatically drop the connection.</remarks>
+        <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> has been disposed.
+            </exception>
+        <exception cref="T:System.InvalidOperationException">
+            The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> is not connected.
+            </exception>
+        <exception cref="T:System.OperationCanceledException">
+            The operation was canceled.
+            </exception>
+        <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpException">
+            The SMTP server returned an unexpected status code.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpCommandException">
+            The SMTP command failed.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpProtocolException">
+            An SMTP protocol error occurred.
+            </exception>
+      </Docs>
+    </Member>
+    <Member MemberName="Send">
+      <MemberSignature Language="C#" Value="public void Send (MimeKit.MimeMessage message, System.Threading.CancellationToken cancellationToken = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Send(class MimeKit.MimeMessage message, valuetype System.Threading.CancellationToken cancellationToken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="message" Type="MimeKit.MimeMessage" />
+        <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="message">The message.</param>
+        <param name="cancellationToken">A cancellation token.</param>
+        <summary>
+            Send the specified message.
+            </summary>
+        <remarks>
+            Sends the message by uploading it to an SMTP server.
+            </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="message" /> is <c>null</c>.
+            </exception>
+        <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> has been disposed.
+            </exception>
+        <exception cref="T:System.InvalidOperationException">
+          <para>The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> is not connected.</para>
+          <para>-or-</para>
+          <para>A sender has not been specified.</para>
+          <para>-or-</para>
+          <para>No recipients have been specified.</para>
+        </exception>
+        <exception cref="T:System.OperationCanceledException">
+            The operation has been canceled.
+            </exception>
+        <exception cref="T:System.UnauthorizedAccessException">
+            Authentication is required before sending a message.
+            </exception>
+        <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpException">
+            An SMTP protocol exception occurred.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpCommandException">
+            The SMTP command failed.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpProtocolException">
+            An SMTP protocol exception occurred.
+            </exception>
+      </Docs>
+    </Member>
+    <Member MemberName="Send">
+      <MemberSignature Language="C#" Value="public void Send (MimeKit.MimeMessage message, MimeKit.MailboxAddress sender, System.Collections.Generic.IEnumerable&lt;MimeKit.MailboxAddress&gt; recipients, System.Threading.CancellationToken cancellationToken = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Send(class MimeKit.MimeMessage message, class MimeKit.MailboxAddress sender, class System.Collections.Generic.IEnumerable`1&lt;class MimeKit.MailboxAddress&gt; recipients, valuetype System.Threading.CancellationToken cancellationToken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.14.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="message" Type="MimeKit.MimeMessage" />
+        <Parameter Name="sender" Type="MimeKit.MailboxAddress" />
+        <Parameter Name="recipients" Type="System.Collections.Generic.IEnumerable&lt;MimeKit.MailboxAddress&gt;" />
+        <Parameter Name="cancellationToken" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="message">The message.</param>
+        <param name="sender">The mailbox address to use for sending the message.</param>
+        <param name="recipients">The mailbox addresses that should receive the message.</param>
+        <param name="cancellationToken">A cancellation token.</param>
+        <summary>
+            Send the specified message using the supplied sender and recipients.
+            </summary>
+        <remarks>
+            Sends the message by uploading it to an SMTP server using the supplied sender and recipients.
+            </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <para>
+            <paramref name="message" /> is <c>null</c>.</para>
+          <para>-or-</para>
+          <para>
+            <paramref name="sender" /> is <c>null</c>.</para>
+          <para>-or-</para>
+          <para>
+            <paramref name="recipients" /> is <c>null</c>.</para>
+        </exception>
+        <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> has been disposed.
+            </exception>
+        <exception cref="T:System.InvalidOperationException">
+          <para>The <see cref="T:MailKit.Net.Smtp.SmtpClient" /> is not connected.</para>
+          <para>-or-</para>
+          <para>A sender has not been specified.</para>
+          <para>-or-</para>
+          <para>No recipients have been specified.</para>
+        </exception>
+        <exception cref="T:System.OperationCanceledException">
+            The operation has been canceled.
+            </exception>
+        <exception cref="T:System.UnauthorizedAccessException">
+            Authentication is required before sending a message.
+            </exception>
+        <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpCommandException">
+            The SMTP command failed.
+            </exception>
+        <exception cref="T:MailKit.Net.Smtp.SmtpProtocolException">
+            An SMTP protocol exception occurred.
+            </exception>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

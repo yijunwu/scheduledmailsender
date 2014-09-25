@@ -1,0 +1,7 @@
+D:\Investment\Project\MailKit-master\MimeKit\MimeKit\obj\Debug\lib\net40\ResolveAssemblyReference.cache
+D:\Investment\Project\MailKit-master\MimeKit\MimeKit\bin\Debug\lib\net40\MimeKit.dll
+D:\Investment\Project\MailKit-master\MimeKit\MimeKit\bin\Debug\lib\net40\MimeKit.pdb
+D:\Investment\Project\MailKit-master\MimeKit\MimeKit\bin\Debug\lib\net40\BouncyCastle.dll
+D:\Investment\Project\MailKit-master\MimeKit\MimeKit\bin\Debug\lib\net40\BouncyCastle.pdb
+D:\Investment\Project\MailKit-master\MimeKit\MimeKit\obj\Debug\lib\net40\MimeKit.dll
+D:\Investment\Project\MailKit-master\MimeKit\MimeKit\obj\Debug\lib\net40\MimeKit.pdb

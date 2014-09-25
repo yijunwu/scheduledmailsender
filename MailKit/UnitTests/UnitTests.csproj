@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{637EC535-3921-4A7A-8CB4-00A5AB18FAA2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>UnitTests</RootNamespace>
+    <AssemblyName>UnitTests</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <NoWarn>219</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <NoWarn>219</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\MailKit\mailkit.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\NUnit-2.6.3\bin\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MimeKit\MimeKit\MimeKit.csproj">
+      <Project>{C909FC86-6084-41E5-B99C-DCDF2A5B7F82}</Project>
+      <Name>MimeKit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MailKit\MailKit.csproj">
+      <Project>{DB3A2478-4742-452B-80C1-F672B64285AD}</Project>
+      <Name>MailKit</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Net\Imap\ImapClientTests.cs" />
+    <Compile Include="Net\Imap\ImapEncodingTests.cs" />
+    <Compile Include="Net\Imap\ImapReplayStream.cs" />
+    <Compile Include="Net\Imap\ImapUtilsTests.cs" />
+    <Compile Include="Net\Pop3\Pop3ClientTests.cs" />
+    <Compile Include="Net\Pop3\Pop3ReplayStream.cs" />
+    <Compile Include="Net\Smtp\SmtpClientTests.cs" />
+    <Compile Include="Net\Smtp\SmtpReplayStream.cs" />
+    <Compile Include="MessageSortingTests.cs" />
+    <Compile Include="MessageThreadingTests.cs" />
+    <Compile Include="UriExtensionTests.cs" />
+    <Compile Include="Security\SaslMechanismTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Net\Imap\Resources\common\capability-greeting.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.0.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.1.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.10.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.11.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.12.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.13.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.14.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.15.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.16.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.17.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.18.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.19.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.2.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.20.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.21.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.22.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.23.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.24.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.25.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.26.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.27.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.28.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.29.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.3.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.30.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.31.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.32.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.33.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.34.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.35.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.36.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.37.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.38.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.39.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.4.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.40.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.41.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.42.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.43.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.44.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.45.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.46.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.47.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.48.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.49.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.5.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.6.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.7.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.8.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\common\message.9.msg" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\add-flags.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.1.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.2.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.3.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.4.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.5.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.6.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.7.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.8.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.9.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.10.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.11.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.12.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.13.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.14.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.15.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.16.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.17.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.18.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.19.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.20.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.21.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.22.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.23.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.24.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.25.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.26.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.27.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.28.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.29.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.30.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.31.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.32.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.33.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.34.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.35.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.36.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.37.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.38.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.39.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.40.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.41.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.42.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.43.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.44.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.45.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.46.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.47.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.48.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.49.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\append.50.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\authenticate.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\capability.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\create-unittests.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\delete-unittests.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.1.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.2.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.3.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.5.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.7.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.8.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.9.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.11.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.12.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.13.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.14.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.26.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.27.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.28.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.29.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.31.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.34.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.41.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.42.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.43.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\fetch.50.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\go-ahead.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\greeting.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\list-inbox.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\list-personal.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\list-unittests.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\logout.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\namespace.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\remove-flags.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\search.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\search-summary.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\select-unittests.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\set-flags.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\unselect-unittests.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\xlist.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\comcast\capa1.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\comcast\capa2.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\comcast\err.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\comcast\greeting.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\comcast\ok.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\comcast\quit.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\comcast\retr1.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\comcast\stat1.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\exchange\auth.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\exchange\capa.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\exchange\greeting.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\exchange\plus.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\exchange\quit.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\exchange\retr1.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\exchange\stat.txt" />
+    <EmbeddedResource Include="Net\Pop3\Resources\exchange\uidl.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\auth-required.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\auth-successful.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\comcast-auth-plain.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\comcast-data.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\comcast-data-done.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\comcast-ehlo.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\comcast-ehlo+pipelining.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\comcast-greeting.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\comcast-mail-from.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\comcast-quit.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\comcast-rcpt-to.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\comcast-rset.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\mailbox-unavailable.txt" />
+    <EmbeddedResource Include="Net\Smtp\Resources\pipelined-mail-from-rcpt-to.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\examine-inbox.txt" />
+    <EmbeddedResource Include="Net\Imap\Resources\gmail\precise-pangolin-message.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="PrefixedHierarchical" ResourceNamePolicy="FileFormatDefault" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

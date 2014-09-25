@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>MailKit</id>
+        <version>0.14.0.0</version>
+        <title>MailKit</title>
+        <authors>Jeffrey Stedfast</authors>
+        <owners>Jeffrey Stedfast</owners>
+        <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>http://github.com/jstedfast/MailKit</projectUrl>
+        <iconUrl>https://raw.github.com/jstedfast/MailKit/master/nuget/mailkit-50.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>MailKit is an Open Source cross-platform .NET mail-client library that is based on MimeKit and optimized for mobile devices.
+
+Features include:
+* SASL Authentication via NTLM, DIGEST-MD5, CRAM-MD5, LOGIN, PLAIN, and XOAUTH2.
+* A fully-cancellable SmtpClient with support for STARTTLS, 8BITMIME, BINARYMIME and PIPELINING
+* A fully-cancellable Pop3Client with support for STLS, UIDL, and APOP.
+* A fully-cancellable ImapClient with support for LITERAL+, NAMESPACE, CHILDREN, LOGINDISABLED, STARTTLS, MULTIAPPEND, UNSELECT, UIDPLUS, CONDSTORE, ESEARCH, SASL-IR, COMPRESS, ENABLE, QRESYNC, SORT, THREAD, ESORT, SPECIAL-USE, MOVE, XLIST, and X-GM-EXT1.
+* Client-side sorting and threading of messages (the Ordinal Subject and the Jamie Zawinski threading algorithms are supported).
+* S/MIME and PGP support via MimeKit
+* Microsoft TNEF support via MimeKit</description>
+        <summary>An Open Source .NET mail-client library for Windows, Mac, Linux, and mobile platforms such as iOS and Android.</summary>
+        <releaseNotes>* Fixed an issue with SMTP SASL fallback for DIGEST-MD5 when the server sends an invalid challenge.
+* MailKit.dll is now strong-named.</releaseNotes>
+        <copyright>Xamarin Inc.</copyright>
+        <language>en-US</language>
+        <tags>smtp pop3 imap mime security smime openpgp pgp mbox email parser tnef xamarin android ios monodroid monotouch net40 wpa81</tags>
+        <dependencies>
+            <dependency id="MimeKit" version="0.35.0.0" />
+        </dependencies>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.0" />
+            <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework4.0" />
+            <frameworkAssembly assemblyName="System.Data" targetFramework=".NETFramework4.0" />
+            <frameworkAssembly assemblyName="System" targetFramework="MonoAndroid0.0" />
+            <frameworkAssembly assemblyName="System.Core" targetFramework="MonoAndroid0.0" />
+            <frameworkAssembly assemblyName="System.Data" targetFramework="MonoAndroid0.0" />
+            <frameworkAssembly assemblyName="System" targetFramework="MonoTouch0.0" />
+            <frameworkAssembly assemblyName="System.Core" targetFramework="MonoTouch0.0" />
+            <frameworkAssembly assemblyName="System.Data" targetFramework="MonoTouch0.0" />
+        </frameworkAssemblies>
+    </metadata>
+    <files>
+        <file src="..\MailKit\bin\Release\lib\MonoAndroid\MailKit.dll" target="lib\MonoAndroid\MailKit.dll" />
+        <file src="..\MailKit\bin\Release\lib\MonoAndroid\MailKit.xml" target="lib\MonoAndroid\MailKit.xml" />
+        <file src="..\MailKit\bin\Release\lib\MonoTouch\MailKit.dll" target="lib\MonoTouch\MailKit.dll" />
+        <file src="..\MailKit\bin\Release\lib\MonoTouch\MailKit.xml" target="lib\MonoTouch\MailKit.xml" />
+        <file src="..\MailKit\bin\Release\lib\net40\MailKit.dll" target="lib\net40\MailKit.dll" />
+        <file src="..\MailKit\bin\Release\lib\net40\MailKit.xml" target="lib\net40\MailKit.xml" />
+        <file src="..\MailKit\bin\Release\lib\wpa81\MailKit.dll" target="lib\wpa81\MailKit.dll" />
+        <file src="..\MailKit\bin\Release\lib\wpa81\MailKit.xml" target="lib\wpa81\MailKit.xml" />
+    </files>
+</package>
