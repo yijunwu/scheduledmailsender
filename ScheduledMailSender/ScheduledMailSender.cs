@@ -9,6 +9,7 @@ using MailKit.Net.Smtp;
 using MailKit.Search;
 using MailKit;
 using MimeKit;
+using System.IO;
 
 namespace ScheduledMailSender
 {
@@ -96,11 +97,24 @@ namespace ScheduledMailSender
                                             if (dt2 <= DateTimeOffset.UtcNow && dt2 >= DateTimeOffset.UtcNow.AddHours(-1))
                                             {
                                                 message.Bcc.Remove(addr);
-                                                //this.Send(message, user, pwd, smtpUri);
-                                                Thread.Sleep(30 * 1000);
+                                                this.Send(message, user, pwd, smtpUri);                                                
 
-                                                draftBox.SetFlags(new UniqueId[] { uid }, MessageFlags.Deleted, true);
-                                                draftBox.Expunge();
+                                                for (int retry = 1, maxRetry = 10; retry <= maxRetry; i++)
+                                                {
+                                                    Thread.Sleep(20 * 1000);
+                                                    try
+                                                    {
+                                                        Console.WriteLine("{0} in {1} trys to delete draft", retry, maxRetry);
+                                                        draftBox.SetFlags(new UniqueId[] { uid }, MessageFlags.Deleted, true);
+                                                        draftBox.Expunge();
+                                                    }
+                                                    catch (IOException e)
+                                                    {
+                                                        retry++;
+                                                        continue;
+                                                    }
+                                                    break;
+                                                }
 
                                                 Console.WriteLine("Scheduled mail is sent. Subject: {0}", message.Subject);
                                                 break;
